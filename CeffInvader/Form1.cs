@@ -9,11 +9,7 @@ namespace CeffInvader
         }
 
         int vitesse = 5;
-        bool left = false;
-        bool right = false;
-        bool up = false;
-        bool down = false;
-        bool shoot = false;
+        bool left, right, up, down, shoot = false;
 
         SpaceShip MainShip = new SpaceShip(300, 300, 50, 50, 5);
 

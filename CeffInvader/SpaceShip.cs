@@ -30,7 +30,7 @@ namespace CeffInvader
             gr.DrawImage(img, PosiX, PosiY, x, y);
         }
 
-        public void move(int Direction, int v)
+        public void Move(int Direction, int v)
         {
             switch (Direction)
             {
@@ -41,7 +41,7 @@ namespace CeffInvader
             }
         }
 
-        public void fire()
+        public void Fire()
         {
             SpaceShipBullet bullet = new SpaceShipBullet(PosiY, PosiX);
             SpaceShipBullets.Add(bullet);
