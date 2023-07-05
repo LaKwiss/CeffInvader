@@ -39,7 +39,7 @@ namespace CeffInvader
             }
         }
 
-        public async void Fire()
+        public void Fire()
         {
             SpaceShipBullet bullet = new SpaceShipBullet(PosiY, PosiX);
             SpaceShipBullets.Add(bullet);

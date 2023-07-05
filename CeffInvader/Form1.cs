@@ -6,6 +6,7 @@ namespace CeffInvader
         public Form1()
         {
             InitializeComponent();
+            Ennemy.Setup();
         }
 
         int vitesse = 5;
@@ -51,17 +52,23 @@ namespace CeffInvader
             Graphics gr = e.Graphics;
 
             MainShip.Draw(gr);
-            
-            Ennemy.Draw(gr);
 
             foreach (SpaceShipBullet bullet in MainShip.SpaceShipBullets)
             {
                 bullet.Draw(gr);
                 bullet.Move();
-
+                
             }
 
+            foreach (Ennemy ennemy in Ennemy.EnnemyBullets)
+            {
+                ennemy.Draw(gr);
+                ennemy.Move();
+            }   
+
             
+
+
         }
 
         private void Tmr_Tick_1(object sender, EventArgs e)
