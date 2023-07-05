@@ -11,10 +11,7 @@ namespace CeffInvader
         int vitesse = 5;
         bool left, right, up, down, shoot = false;
 
-        SpaceShip MainShip = new SpaceShip(300, 300, 50, 50, 5);
-
-
-
+        SpaceShip MainShip = new SpaceShip(300, 300, 50, 50);
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
@@ -30,36 +27,22 @@ namespace CeffInvader
         {
             switch (k)
             {
-                case Keys.A:
-                    left = a;
-                    break;
-                case Keys.D:
-                    right = a;
-                    break;
-                case Keys.W:
-                    up = a;
-                    break;
-                case Keys.S:
-                    down = a;
-                    break;
-                case Keys.Space:
-                    shoot = a;
-                    break;
-                default:
-                    break;
-
-
+                case Keys.A: left = a; break;
+                case Keys.D: right = a;break;
+                case Keys.W: up = a; break;
+                case Keys.S: down = a; break;
+                case Keys.Space: shoot = a; break;
+                default: break;
             }
         }
         public void move()
         {
-            if (right) { MainShip.move(1, 1 * vitesse); }
-            if (left) { MainShip.move(2, 1 * vitesse); }
-            if (down) { MainShip.move(3, 1 * vitesse); }
-            if (up) { MainShip.move(4, 1 * vitesse); }
-            if (shoot) { MainShip.fire(); }
+            if (right) { MainShip.Move(1, 1 * vitesse); }
+            if (left) { MainShip.Move(2, 1 * vitesse); }
+            if (down) { MainShip.Move(3, 1 * vitesse); }
+            if (up) { MainShip.Move(4, 1 * vitesse); }
+            if (shoot) { MainShip.Fire(); }
 
-          
         }
 
         public void PbxMain_Paint(object sender, PaintEventArgs e)
@@ -70,8 +53,8 @@ namespace CeffInvader
 
             foreach (SpaceShipBullet bullet in MainShip.SpaceShipBullets)
             {
-                bullet.draw(gr);
-                bullet.move();
+                bullet.Draw(gr);
+                bullet.Move();
             }
         }
 

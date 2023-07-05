@@ -24,6 +24,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="bullet.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="MainShip.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

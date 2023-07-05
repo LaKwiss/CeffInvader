@@ -8,16 +8,14 @@ namespace CeffInvader
         public int y;
         public int PosiX;
         public int PosiY;
-        public int vitesse;
         Image img;
 
         public List<SpaceShipBullet> SpaceShipBullets = new List<SpaceShipBullet>();
 
-        public SpaceShip(int PosiX, int PosiY, int x, int y, int vitesse)
+        public SpaceShip(int PosiX, int PosiY, int x, int y)
         {
             this.x = x;
             this.y = y;
-            this.vitesse = vitesse;
             this.PosiX = PosiX;
             this.PosiY = PosiY;
 

@@ -10,26 +10,24 @@ namespace CeffInvader
     {
         public int x;
         public int y;
-        public SolidBrush brush;
+        Image img;
 
         public SpaceShipBullet(int x, int y)
         {
             this.x = x; 
             this.y = y;
 
-            
-
-            brush = new SolidBrush(Color.FromArgb(252, 136, 3));
+            img = Image.FromFile("Bullet.png");
         }
 
-        public void draw(Graphics gr)
+        public void Draw(Graphics gr)
         {
-            gr.FillEllipse(brush, y, x, 30, 30);
+            gr.DrawImage(img, y + 19, x, 12, 21);
         }
 
-        public void move()
+        public void Move()
         {
-            x -= 5;
+            x -= 2;
         }
     }
 }
