@@ -11,24 +11,15 @@ namespace CeffInvader
         public int x;
         public int y;
         public SolidBrush brush;
-        public int speed;
-        public uint param;
-        private SpaceShip owner;
 
-        public SpaceShipBullet(int x, int y, int speed, uint param, SpaceShip owner)
+        public SpaceShipBullet(int x, int y)
         {
             this.x = x; 
             this.y = y;
-            this.speed = speed;
-            this.param = param;
 
-            int r = 252;
-            int g = 136;
-            int b = 3;
+            
 
-            this.owner = owner;
-
-            brush = new SolidBrush(Color.FromArgb(r, g, b));
+            brush = new SolidBrush(Color.FromArgb(252, 136, 3));
         }
 
         public void draw(Graphics gr)
@@ -38,7 +29,7 @@ namespace CeffInvader
 
         public void move()
         {
-            x -= speed;
+            x -= 5;
         }
     }
 }

@@ -34,28 +34,17 @@ namespace CeffInvader
         {
             switch (Direction)
             {
-                case 1:
-                    PosiX += v * 2;
-                    break;
-                case 2:
-                    PosiX -= v * 2;
-                    break;
-                case 3:
-                    PosiY += v * 2;
-                    break;
-                case 4:
-                    PosiY -= v * 2;
-                    break;
+                case 1: PosiX += v * 2; break;
+                case 2: PosiX -= v * 2; break;
+                case 3: PosiY += v * 2; break;
+                case 4: PosiY -= v * 2; break;
             }
         }
 
         public void fire()
         {
-            SpaceShipBullet bullet = new SpaceShipBullet(PosiY, PosiX, 5, 0, this);
-
+            SpaceShipBullet bullet = new SpaceShipBullet(PosiY, PosiX);
             SpaceShipBullets.Add(bullet);
-
         }
- 
     } 
 }

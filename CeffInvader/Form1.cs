@@ -1,6 +1,3 @@
-using System.Diagnostics;
-using System.Security.Cryptography.X509Certificates;
-
 namespace CeffInvader
 {
     public partial class Form1 : Form
@@ -20,7 +17,7 @@ namespace CeffInvader
 
         SpaceShip MainShip = new SpaceShip(300, 300, 50, 50, 5);
 
-        
+
 
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
@@ -39,19 +36,15 @@ namespace CeffInvader
             {
                 case Keys.A:
                     left = a;
-
                     break;
                 case Keys.D:
                     right = a;
-
                     break;
                 case Keys.W:
                     up = a;
-
                     break;
                 case Keys.S:
                     down = a;
-
                     break;
                 case Keys.Space:
                     shoot = a;
@@ -62,19 +55,15 @@ namespace CeffInvader
 
             }
         }
-        public void Move()
+        public void move()
         {
-            if (right)  { MainShip.move(1, 1 * vitesse); }
-            if (left)   { MainShip.move(2, 1 * vitesse); }
-            if (down)   { MainShip.move(3, 1 * vitesse); }
-            if (up)     { MainShip.move(4, 1 * vitesse); }
-            if (shoot)  { MainShip.fire(); }
-        }
+            if (right) { MainShip.move(1, 1 * vitesse); }
+            if (left) { MainShip.move(2, 1 * vitesse); }
+            if (down) { MainShip.move(3, 1 * vitesse); }
+            if (up) { MainShip.move(4, 1 * vitesse); }
+            if (shoot) { MainShip.fire(); }
 
-        public void tmr_Tick(object sender, EventArgs e)
-        {
-            Move();
-            PbxMain.Refresh();
+          
         }
 
         public void PbxMain_Paint(object sender, PaintEventArgs e)
@@ -82,12 +71,18 @@ namespace CeffInvader
             Graphics gr = e.Graphics;
 
             MainShip.Draw(gr);
-            
+
             foreach (SpaceShipBullet bullet in MainShip.SpaceShipBullets)
             {
                 bullet.draw(gr);
                 bullet.move();
             }
+        }
+
+        public void tmr_Tick(object sender, EventArgs e)
+        {
+            move();
+            PbxMain.Refresh();
         }
     }
 }
