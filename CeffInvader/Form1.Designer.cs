@@ -30,7 +30,7 @@
         {
             components = new System.ComponentModel.Container();
             PbxMain = new PictureBox();
-            tmr = new System.Windows.Forms.Timer(components);
+            Tmr = new System.Windows.Forms.Timer(components);
             ((System.ComponentModel.ISupportInitialize)PbxMain).BeginInit();
             SuspendLayout();
             // 
@@ -44,11 +44,11 @@
             PbxMain.TabStop = false;
             PbxMain.Paint += PbxMain_Paint;
             // 
-            // tmr
+            // Tmr
             // 
-            tmr.Enabled = true;
-            tmr.Interval = 1;
-            tmr.Tick += tmr_Tick;
+            Tmr.Enabled = true;
+            Tmr.Interval = 1;
+            Tmr.Tick += Tmr_Tick_1;
             // 
             // Form1
             // 
@@ -69,6 +69,6 @@
 
 
         private PictureBox PbxMain;
-        public System.Windows.Forms.Timer tmr;
+        public System.Windows.Forms.Timer Tmr;
     }
 }

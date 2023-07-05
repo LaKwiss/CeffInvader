@@ -20,12 +20,12 @@ namespace CeffInvader
             this.PosiY = PosiY;
 
             img = Image.FromFile("MainShip.jpg");
-
         }
 
         public void Draw(Graphics gr)
         {
             gr.DrawImage(img, PosiX, PosiY, x, y);
+            
         }
 
         public void Move(int Direction, int v)
@@ -39,7 +39,7 @@ namespace CeffInvader
             }
         }
 
-        public void Fire()
+        public async void Fire()
         {
             SpaceShipBullet bullet = new SpaceShipBullet(PosiY, PosiX);
             SpaceShipBullets.Add(bullet);

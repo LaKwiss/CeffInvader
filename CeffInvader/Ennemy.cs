@@ -6,29 +6,22 @@ using System.Threading.Tasks;
 
 namespace CeffInvader
 {
-    public class SpaceShipBullet
+    public class Ennemy
     {
-        public int x;
-        public int y;
         Image img;
 
-        public SpaceShipBullet(int x, int y)
+        public Ennemy()
         {
-            this.x = x; 
-            this.y = y;
-
-            img = Image.FromFile("Bullet.png");
+            img = Image.FromFile("Ennemy.png");
         }
 
         public void Draw(Graphics gr)
         {
-            gr.DrawImage(img, y + 19, x, 12, 21);
+            gr.DrawImage(img, 0, 0, 50, 50);
         }
 
         public void Move()
         {
-            x -= 10;
-
             
         }
     }
