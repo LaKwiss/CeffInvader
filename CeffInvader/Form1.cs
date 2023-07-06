@@ -1,3 +1,5 @@
+using System.Diagnostics;
+
 namespace CeffInvader
 {
     public partial class Form1 : Form
@@ -6,14 +8,19 @@ namespace CeffInvader
         public Form1()
         {
             InitializeComponent();
-            Ennemy.Setup();
+
+            
         }
 
         int vitesse = 5;
+        int clock;
+        int maxGunRate = 20;
         bool left, right, up, down, shoot = false;
+        int premierefois = 0;
 
         SpaceShip MainShip = new SpaceShip(300, 300, 50, 50);
-        Ennemy Ennemy = new Ennemy();
+        Ennemy Enemy = new Ennemy(500, 300, 50, 50, 50);
+
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
@@ -39,12 +46,13 @@ namespace CeffInvader
         }
         public void MoveShip()
         {
-            if (right) { MainShip.Move(1, 1 * vitesse); }
-            if (left) { MainShip.Move(2, 1 * vitesse); }
-            if (down) { MainShip.Move(3, 1 * vitesse); }
-            if (up) { MainShip.Move(4, 1 * vitesse); }
-            if (shoot) { MainShip.Fire(); }
+            if (right)  { MainShip.Move(1, 1 * vitesse); }
+            if (left)   { MainShip.Move(2, 1 * vitesse); }
+            if (down)   { MainShip.Move(3, 1 * vitesse); }
+            if (up)     { MainShip.Move(4, 1 * vitesse); }
+            if (shoot)  { if (clock % maxGunRate == 0) { MainShip.Fire(); } }
 
+            clock++;
         }
 
         public void PbxMain_Paint(object sender, PaintEventArgs e)
@@ -57,26 +65,40 @@ namespace CeffInvader
             {
                 bullet.Draw(gr);
                 bullet.Move();
-                
             }
 
-            foreach (Ennemy ennemy in Ennemy.EnnemyBullets)
+            Debug.WriteLine(Enemy.EnemyList.Count);
+
+            foreach (Ennemy enemy in Enemy.EnemyList)
             {
-                ennemy.Draw(gr);
-                ennemy.Move();
-            }   
-
-            
-
-
+                enemy.Draw(gr);
+                enemy.Move();
+            }
         }
 
         private void Tmr_Tick_1(object sender, EventArgs e)
         {
             MoveShip();
             PbxMain.Refresh();
+
+            if (premierefois == 0)
+            {
+                EnemyGeneration();
+            }
+
+            premierefois++;
         }
 
-        
+        public void EnemyGeneration()
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                Enemy.EnemyList.Add(Enemy);
+            }
+
+            
+        }
+
+
     }
 }

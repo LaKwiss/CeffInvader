@@ -8,7 +8,7 @@
         public int rayon;
         public int dx;
         public int dy;
-        public List<Ennemy> EnnemyBullets = new List<Ennemy>();
+        public List<Ennemy> EnemyList = new List<Ennemy>();
 
         public Ennemy(int x, int y, int rayon, int dx, int dy)
         {
@@ -20,16 +20,16 @@
 
             img = Image.FromFile("Ennemy.png");
         }
-        public void Setup()
-        {
-            Ennemy ennemy = new Ennemy();
-            EnnemyBullets.Add(ennemy);
-        }
-
         public void Draw(Graphics gr)
         {
-            gr.DrawImage(img, x, 0, 50, 50);
+            int PosX = 100;
+            int PosY = 100;
+
+
+            gr.DrawImage(img, PosX, PosY, 50, 50);
         }
+
+        
 
         public void Move()
         {
