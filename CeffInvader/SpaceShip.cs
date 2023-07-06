@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System.Diagnostics;
+using System.Drawing;
 
 namespace CeffInvader
 {
@@ -43,6 +44,13 @@ namespace CeffInvader
         {
             SpaceShipBullet bullet = new SpaceShipBullet(PosiY, PosiX);
             SpaceShipBullets.Add(bullet);
+
+            if (SpaceShipBullets.Count >= 150)
+            {
+                SpaceShipBullets.RemoveRange(0, 50);
+            }
+
+            Debug.WriteLine(SpaceShipBullets.Count);
         }
     } 
 }

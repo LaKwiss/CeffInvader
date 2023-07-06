@@ -14,9 +14,9 @@ namespace CeffInvader
 
         int vitesse = 5;
         int clock;
-        int maxGunRate = 20;
+        int maxGunRate = 0;
         bool left, right, up, down, shoot = false;
-        int premierefois = 0;
+        int premierefois = 1;
 
         SpaceShip MainShip = new SpaceShip(300, 300, 50, 50);
         Ennemy Enemy = new Ennemy(500, 300, 50, 50, 50);
@@ -50,7 +50,7 @@ namespace CeffInvader
             if (left)   { MainShip.Move(2, 1 * vitesse); }
             if (down)   { MainShip.Move(3, 1 * vitesse); }
             if (up)     { MainShip.Move(4, 1 * vitesse); }
-            if (shoot)  { if (clock % maxGunRate == 0) { MainShip.Fire(); } }
+            if (shoot)  { if (0 == 0) { MainShip.Fire();  } }
 
             clock++;
         }
@@ -69,11 +69,26 @@ namespace CeffInvader
 
             Debug.WriteLine(Enemy.EnemyList.Count);
 
-            foreach (Ennemy enemy in Enemy.EnemyList)
+            for (int i = 0; i < 5; i++)
             {
-                enemy.Draw(gr);
-                enemy.Move();
+                foreach (Ennemy enemy in Enemy.EnemyList)
+                {
+                    i += 50;
+
+                    enemy.Draw(gr, i, 50);
+                    enemy.Move();
+                }
             }
+            
+        }
+
+        public void EnemyGeneration()
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                Enemy.EnemyList.Add(Enemy);
+            }
+
         }
 
         private void Tmr_Tick_1(object sender, EventArgs e)
@@ -89,16 +104,6 @@ namespace CeffInvader
             premierefois++;
         }
 
-        public void EnemyGeneration()
-        {
-            for (int i = 0; i < 5; i++)
-            {
-                Enemy.EnemyList.Add(Enemy);
-            }
-
-            
-        }
-
-
+        
     }
 }

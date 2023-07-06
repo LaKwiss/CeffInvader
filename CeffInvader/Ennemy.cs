@@ -20,12 +20,8 @@
 
             img = Image.FromFile("Ennemy.png");
         }
-        public void Draw(Graphics gr)
+        public void Draw(Graphics gr, int PosX, int PosY)
         {
-            int PosX = 100;
-            int PosY = 100;
-
-
             gr.DrawImage(img, PosX, PosY, 50, 50);
         }
 
