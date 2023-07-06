@@ -20,12 +20,18 @@
 
             img = Image.FromFile("Ennemy.png");
         }
-        public void Draw(Graphics gr, int PosX, int PosY)
+        public void Draw(Graphics gr, int x, int y)
         {
-            gr.DrawImage(img, PosX, PosY, 50, 50);
-        }
+            foreach (Ennemy enemy in EnemyList)
+            {
+                
 
-        
+                gr.DrawImage(img, x, y, 50, 50);
+                x += 40;
+            }
+
+            
+        }
 
         public void Move()
         {

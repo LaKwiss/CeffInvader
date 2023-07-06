@@ -12,14 +12,14 @@ namespace CeffInvader
             
         }
 
+        int ft = 0;
         int vitesse = 5;
-        int clock;
-        int maxGunRate = 0;
+        int maxGunRate = 20;
         bool left, right, up, down, shoot = false;
-        int premierefois = 1;
+        int xx, yy, clock;
 
         SpaceShip MainShip = new SpaceShip(300, 300, 50, 50);
-        Ennemy Enemy = new Ennemy(500, 300, 50, 50, 50);
+        Ennemy Enemy = new Ennemy(10, 10, 50, 50, 50);
 
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
@@ -50,7 +50,7 @@ namespace CeffInvader
             if (left)   { MainShip.Move(2, 1 * vitesse); }
             if (down)   { MainShip.Move(3, 1 * vitesse); }
             if (up)     { MainShip.Move(4, 1 * vitesse); }
-            if (shoot)  { if (0 == 0) { MainShip.Fire();  } }
+            if (shoot)  { if (clock % maxGunRate == 0) { MainShip.Fire();  } }
 
             clock++;
         }
@@ -59,26 +59,20 @@ namespace CeffInvader
         {
             Graphics gr = e.Graphics;
 
-            MainShip.Draw(gr);
+            MainShip.Draw(gr); // Crée le SpaceShip
 
-            foreach (SpaceShipBullet bullet in MainShip.SpaceShipBullets)
+            foreach (Ennemy enemy in Enemy.EnemyList)
+            {
+                enemy.Draw(gr, xx, yy);
+            }
+                
+
+            foreach (SpaceShipBullet bullet in MainShip.SpaceShipBullets) // Pour chaque balle dans SpaceShipBullets, dessine la balle 
             {
                 bullet.Draw(gr);
                 bullet.Move();
             }
 
-            Debug.WriteLine(Enemy.EnemyList.Count);
-
-            for (int i = 0; i < 5; i++)
-            {
-                foreach (Ennemy enemy in Enemy.EnemyList)
-                {
-                    i += 50;
-
-                    enemy.Draw(gr, i, 50);
-                    enemy.Move();
-                }
-            }
             
         }
 
@@ -90,20 +84,16 @@ namespace CeffInvader
             }
 
         }
-
         private void Tmr_Tick_1(object sender, EventArgs e)
         {
             MoveShip();
             PbxMain.Refresh();
 
-            if (premierefois == 0)
-            {
-                EnemyGeneration();
-            }
+            if (ft == 0) { EnemyGeneration(); }
+            ft++;
 
-            premierefois++;
+            Debug.WriteLine(Enemy.EnemyList.Count);
+            
         }
-
-        
     }
 }
