@@ -7,9 +7,11 @@ namespace CeffInvader
         public List<Ennemy> ennemies = new List<Ennemy>();
         public Ennemy enemy = new Ennemy();
 
+        Image img;
+
         public Ennemies()
         {
-            
+            img = Image.FromFile("Ennemy.png");
         }
 
         public void CreateEnnemies() { 
@@ -21,6 +23,18 @@ namespace CeffInvader
             Debug.WriteLine(ennemies.Count);
         }
 
-        
+        public void Draw(int x, Graphics gr, int limit)
+        {
+            for (int y = 0; y < limit; y++)
+            {
+                gr.DrawImage(img, x, 50, 50, 50);
+                x += 50;
+            }
+        }
+
+        public void MoveAllEnemies(List<Ennemy> ennemies) 
+        {
+            
+        }
     }
 }

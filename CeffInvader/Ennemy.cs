@@ -12,15 +12,15 @@
 
         }
 
-        public void Draw(int x, Graphics gr, int limit)
+        public void Draw(Graphics gr)
         {
-            for (int y = 0; y < limit; y++)
-            {
-                gr.DrawImage(img, x, 50, 50, 50);
-                x += 50;
-            }
+
         }
 
+        public void MoveTo()
+        { 
+        
+        }
 
 
     }

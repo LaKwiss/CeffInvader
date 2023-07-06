@@ -62,7 +62,7 @@ namespace CeffInvader
                 bullet.Move();
             }
 
-            ennemy.enemy.Draw(x, gr, ennemy.ennemies.Count());
+            ennemy.Draw(x, gr, ennemy.ennemies.Count());
 
         }
 
