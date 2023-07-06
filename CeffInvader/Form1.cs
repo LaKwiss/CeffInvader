@@ -19,7 +19,7 @@ namespace CeffInvader
         int xx, yy, clock;
 
         SpaceShip MainShip = new SpaceShip(300, 300, 50, 50);
-        Ennemy Enemy = new Ennemy(10, 10, 50, 50, 50);
+        Ennemies Enemy = new Ennemies() {x=5,rayon=30 };
 
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
@@ -61,9 +61,9 @@ namespace CeffInvader
 
             MainShip.Draw(gr); // Crée le SpaceShip
 
-            foreach (Ennemy enemy in Enemy.EnemyList)
+            foreach (Ennemies enemy in Enemy.EnnemiesList)
             {
-                enemy.Draw(gr, xx, yy);
+                enemy.Draw(gr);
             }
                 
 
@@ -80,19 +80,20 @@ namespace CeffInvader
         {
             for (int i = 0; i < 5; i++)
             {
-                Enemy.EnemyList.Add(Enemy);
+                Enemy.EnnemiesList.Add(Enemy);
             }
 
         }
         private void Tmr_Tick_1(object sender, EventArgs e)
         {
             MoveShip();
+            Enemy.Move();
             PbxMain.Refresh();
 
             if (ft == 0) { EnemyGeneration(); }
             ft++;
 
-            Debug.WriteLine(Enemy.EnemyList.Count);
+            Debug.WriteLine(Enemy.EnnemiesList.Count);
             
         }
     }
