@@ -1,41 +1,26 @@
-﻿namespace CeffInvader
+﻿using System.Diagnostics;
+
+namespace CeffInvader
 {
     public class Ennemies
     {
-        public List<Ennemy> EnnemiesList = new List<Ennemy>();
+        public List<Ennemy> ennemies = new List<Ennemy>();
+        public Ennemy enemy = new Ennemy();
 
-        /// <summary>
-        /// Crée la classe
-        /// </summary>
-       
         public Ennemies()
         {
             
         }
 
-        /// <summary>
-        /// Dessine les ennemies
-        /// </summary>
-        /// <param name="gr">contexte graphique</param>
-        
-        public void Draw(Graphics gr)
-        {
-            foreach (Ennemy ennemy in EnnemiesList)
+        public void CreateEnnemies() { 
+            for (int i = 0; i < 5; i++) 
             {
-                ennemy.Draw(gr);
-            }   
-        }
-
-        public void Move()
-        {
-            foreach (Ennemy ennemy in EnnemiesList)
-            {
-                int Direction = 1;
-                int Vitesse = 1;
-
-
-                ennemy.Move(Direction, Vitesse);
+                ennemies.Add(enemy);
             }
+
+            Debug.WriteLine(ennemies.Count);
         }
+
+        
     }
 }
