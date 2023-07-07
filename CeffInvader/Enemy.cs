@@ -1,25 +1,26 @@
 ﻿namespace CeffInvader
 {
-    public class Ennemy
+    public class Enemy
     {
         Image img;
+        public int x;
 
 
 
-        public Ennemy()
+        public Enemy()
         {
             img = Image.FromFile("Ennemy.png");
 
         }
 
-        public void Draw(Graphics gr)
+        public void Draw(int x, Graphics gr)
         {
-
+            
         }
 
-        public void MoveTo()
-        { 
-        
+        public void Move()
+        {
+
         }
 
 

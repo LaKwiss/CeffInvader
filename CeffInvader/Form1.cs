@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Security.Cryptography;
 
 namespace CeffInvader
 {
@@ -18,7 +19,7 @@ namespace CeffInvader
         Image img = Image.FromFile("Ennemy.png");
 
         SpaceShip MainShip = new SpaceShip(300, 300, 50, 50);
-        Ennemies ennemy = new Ennemies();   
+        EnemySuperVisor AllEnemyControl = new EnemySuperVisor();   
         
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
@@ -56,13 +57,32 @@ namespace CeffInvader
 
             MainShip.Draw(gr);
 
-            foreach (SpaceShipBullet bullet in MainShip.SpaceShipBullets)
+            foreach (SpaceShipBullet bullet in MainShip.SpaceShipBulletsList)
             {
                 bullet.Draw(gr);
                 bullet.Move();
             }
 
-            ennemy.Draw(x, gr, ennemy.ennemies.Count());
+            for (int i = 0; i < 5; i++)
+            {
+                AllEnemyControl.Draw(gr, i);
+            }
+
+            if (tf % 20 == 0)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    AllEnemyControl.Move();
+                }
+
+                tf++;
+            }
+
+            foreach (Enemy bot in AllEnemyControl.EnemiesList)
+            {
+                AllEnemyControl.Move();
+            }
+
 
         }
 
@@ -73,9 +93,12 @@ namespace CeffInvader
 
             if (tf == 0)
             {
-                ennemy.CreateEnnemies();
+                AllEnemyControl.CreateEnnemies();
             }
             tf++;
+
+            
+
         }
     }
 }

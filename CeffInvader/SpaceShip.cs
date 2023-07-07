@@ -11,7 +11,7 @@ namespace CeffInvader
         public int PosiY;
         Image img;
 
-        public List<SpaceShipBullet> SpaceShipBullets = new List<SpaceShipBullet>();
+        public List<SpaceShipBullet> SpaceShipBulletsList = new List<SpaceShipBullet>();
 
         public SpaceShip(int PosiX, int PosiY, int x, int y)
         {
@@ -43,14 +43,14 @@ namespace CeffInvader
         public void Fire()
         {
             SpaceShipBullet bullet = new SpaceShipBullet(PosiY, PosiX);
-            SpaceShipBullets.Add(bullet);
+            SpaceShipBulletsList.Add(bullet);
 
-            if (SpaceShipBullets.Count >= 150)
+            if (SpaceShipBulletsList.Count >= 150)
             {
-                SpaceShipBullets.RemoveRange(0, 50);
+                SpaceShipBulletsList.RemoveRange(0, 50);
             }
 
-            Debug.WriteLine(SpaceShipBullets.Count);
+            //Debug.WriteLine(SpaceShipBulletsList.Count);
         }
     } 
 }
